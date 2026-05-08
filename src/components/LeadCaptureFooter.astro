@@ -1,0 +1,90 @@
+---
+// LeadCaptureFooter.astro
+---
+<footer id="contact" class="pt-24 pb-12 relative overflow-hidden">
+  {/* Triple glow matching logo colors */}
+  <div class="absolute top-0 left-1/4 w-[400px] h-[300px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
+  <div class="absolute top-0 right-1/4 w-[300px] h-[300px] bg-brand-orange/10 blur-[100px] rounded-full pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="glass-card border border-brand-primary/20 p-8 md:p-16 mb-20 overflow-hidden relative">
+
+      {/* Decorative corner accent */}
+      <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-brand-green/10 to-transparent rounded-2xl pointer-events-none"></div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="animate-on-scroll">
+          <div class="inline-block px-3 py-1 rounded-full bg-brand-green/10 border border-brand-green/30 text-brand-green text-xs font-bold mb-4 uppercase tracking-widest">Free Audit</div>
+          <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-6">Find out exactly how much money you are leaving on the table.</h2>
+          <p class="text-lg text-brand-muted mb-8">
+            Every day you wait, your competitors are capturing leads that should have been yours. Fill out the form, and we will show you exactly how to take them back.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-center gap-3 text-white">
+              <svg class="w-5 h-5 text-brand-green shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span class="font-bold">Total local search volume reveal</span>
+            </div>
+            <div class="flex items-center gap-3 text-white">
+              <svg class="w-5 h-5 text-brand-green shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span class="font-bold">Ruthless competitor analysis</span>
+            </div>
+            <div class="flex items-center gap-3 text-white">
+              <svg class="w-5 h-5 text-brand-green shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span class="font-bold">Step-by-step blueprint to dominate</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-brand-dark/60 rounded-2xl p-6 md:p-8 border border-brand-primary/20 animate-on-scroll" style="animation-delay: 0.2s;">
+          <form action="/api/contact" method="POST" class="space-y-5">
+            <div>
+              <label for="name" class="block text-sm font-medium text-brand-muted mb-1.5">Business Name</label>
+              <input type="text" id="name" name="name" required class="w-full bg-brand-card border border-brand-primary/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary transition-all placeholder:text-brand-muted/50" placeholder="Apex Fitness" />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-brand-muted mb-1.5">Email Address</label>
+              <input type="email" id="email" name="email" required class="w-full bg-brand-card border border-brand-primary/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary transition-all placeholder:text-brand-muted/50" placeholder="owner@business.com" />
+            </div>
+            <div class="grid grid-cols-2 gap-5">
+              <div>
+                <label for="phone" class="block text-sm font-medium text-brand-muted mb-1.5">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required class="w-full bg-brand-card border border-brand-primary/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary transition-all placeholder:text-brand-muted/50" placeholder="(555) 000-0000" />
+              </div>
+              <div>
+                <label for="timeToCall" class="block text-sm font-medium text-brand-muted mb-1.5">Best Time to Call</label>
+                <select id="timeToCall" name="timeToCall" required class="w-full bg-brand-card border border-brand-primary/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary transition-all appearance-none">
+                  <option value="" disabled selected>Select...</option>
+                  <option value="Morning">Morning</option>
+                  <option value="Afternoon">Afternoon</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="w-full btn-orange py-4 mt-2 text-base">
+              Request Free Audit →
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    {/* Footer bottom bar */}
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-t border-brand-primary/10 pt-8">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-xl overflow-hidden flex items-center justify-center bg-[#FFFFFF] shrink-0">
+          <img src="/logo.png" alt="Apex Business Assets Logo" class="w-9 h-9 object-contain" />
+        </div>
+        <div class="flex flex-col leading-tight">
+          <span class="text-white font-heading font-bold text-sm">Apex <span class="text-brand-orange">Business</span></span>
+          <span class="text-brand-green font-heading text-xs font-semibold tracking-widest uppercase">Assets</span>
+        </div>
+      </div>
+      <div class="text-sm text-brand-muted flex gap-6">
+        <a href="/privacy" class="hover:text-brand-orange transition-colors">Privacy Policy</a>
+        <a href="/terms" class="hover:text-brand-orange transition-colors">Terms of Service</a>
+      </div>
+      <div class="text-sm text-brand-muted">
+        &copy; {new Date().getFullYear()} Apex Business Assets. All rights reserved.
+      </div>
+    </div>
+  </div>
+</footer>

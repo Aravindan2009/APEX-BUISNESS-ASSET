@@ -1,0 +1,37 @@
+---
+// Hero.astro
+---
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+
+  {/* Multi-color ambient glow matching logo */}
+  <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-primary/15 blur-[140px] rounded-full pointer-events-none"></div>
+  <div class="absolute top-10 right-1/4 w-[400px] h-[400px] bg-brand-orange/10 blur-[140px] rounded-full pointer-events-none"></div>
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-green/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-orange/10 border border-brand-orange/30 text-brand-orange text-xs sm:text-sm font-bold mb-6 sm:mb-8 animate-fade-in-up max-w-full">
+      <span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse shrink-0"></span>
+      <span class="truncate sm:whitespace-normal">The harsh truth about your local market...</span>
+    </div>
+
+    <h1 class="text-4xl sm:text-5xl md:text-7xl font-heading font-extrabold text-white tracking-tight mb-6 animate-fade-in-up" style="animation-delay: 0.1s;">
+      Your Competitors Are Stealing <br class="hidden md:block"/>
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-brand-green to-brand-orange">Your Highest-Paying Clients.</span>
+    </h1>
+
+    <p class="mt-6 text-lg sm:text-xl text-brand-muted max-w-2xl mx-auto mb-10 animate-fade-in-up px-2 sm:px-0" style="animation-delay: 0.2s;">
+      Right now, people in your city are searching for your exact services. If your website isn't engineered for conversion, you are literally handing cash to the other guys.
+    </p>
+
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
+      <a href="#contact" class="btn-orange w-full sm:w-auto text-lg px-8 py-4">
+        Claim Your Free Strategy Audit
+      </a>
+      <a href="#audit" class="btn-secondary w-full sm:w-auto text-lg px-8 py-4">
+        See Exactly Why You're Losing ↓
+      </a>
+    </div>
+
+  </div>
+</section>

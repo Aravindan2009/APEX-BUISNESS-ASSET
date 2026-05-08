@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+---
+
+<Layout title="Terms of Service | Apex Business Assets">
+  <Navigation />
+  
+  <main class="pt-32 pb-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="glass-card p-8 md:p-12">
+      <h1 class="text-4xl font-heading font-bold text-white mb-8">Terms of Service</h1>
+      
+      <div class="space-y-6 text-brand-muted">
+        <p>Last updated: {new Date().toLocaleDateString()}</p>
+        
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">1. Agreement to Terms</h2>
+        <p>By accessing or using our website and services, you agree to be bound by these Terms of Service. If you disagree with any part of the terms, you may not access our services.</p>
+        
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">2. Services Provided</h2>
+        <p>Apex Business Assets provides digital marketing, web design, and local SEO services to businesses. The specific details, deliverables, and timelines of these services will be outlined in separate client agreements.</p>
+        
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">3. Intellectual Property</h2>
+        <p>The content, organization, graphics, design, compilation, and other matters related to our website are protected under applicable copyrights and intellectual property laws. You may not copy, redistribute, use or publish any such content without prior written permission.</p>
+        
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">4. Limitation of Liability</h2>
+        <p>We shall not be held liable for any indirect, incidental, special, consequential or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from your use of our services.</p>
+      </div>
+    </div>
+  </main>
+</Layout>
