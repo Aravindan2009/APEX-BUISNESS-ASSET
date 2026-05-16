@@ -1,0 +1,165 @@
+---
+// LeadModal.astro - A fresh, client-side only modal
+---
+<div id="leadModal" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300">
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="leadModalBackdrop"></div>
+  
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg px-4">
+    <div class="bg-gray-900 border border-gray-800 rounded-3xl shadow-2xl overflow-hidden relative">
+      
+      {/* Decorative gradients */}
+      <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-brand-indigo via-brand-cyan to-brand-coral"></div>
+      <div class="absolute -top-32 -right-32 w-64 h-64 bg-brand-indigo/20 blur-[100px] rounded-full pointer-events-none"></div>
+      
+      <button id="closeLeadModal" class="absolute top-4 right-4 text-gray-400 hover:text-white bg-gray-800/50 hover:bg-gray-700 p-2 rounded-full transition-colors z-10">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="p-8 sm:p-10" id="leadFormContainer">
+        <h3 class="text-3xl font-black text-white font-heading tracking-tight mb-2">Claim Your Audit</h3>
+        <p class="text-gray-400 text-sm mb-8">Enter your details and our team will analyze your digital footprint for free.</p>
+        
+        <form id="leadForm" class="space-y-5 relative z-10">
+          <div>
+            <input type="text" name="business_name" required placeholder="Business Name" class="w-full bg-gray-800/50 border border-gray-700 rounded-xl px-5 py-4 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-indigo focus:border-brand-indigo transition-all font-medium" />
+          </div>
+          <div>
+            <input type="email" name="email" required placeholder="Email Address" class="w-full bg-gray-800/50 border border-gray-700 rounded-xl px-5 py-4 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-indigo focus:border-brand-indigo transition-all font-medium" />
+          </div>
+          <div>
+            <input type="tel" name="phone" required placeholder="Phone Number" class="w-full bg-gray-800/50 border border-gray-700 rounded-xl px-5 py-4 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-indigo focus:border-brand-indigo transition-all font-medium" />
+          </div>
+          
+          <button type="submit" id="leadSubmitBtn" class="w-full bg-white text-black font-bold py-4 rounded-xl mt-4 hover:bg-gray-100 transition-all flex items-center justify-center gap-2 group">
+            <span id="leadSubmitText">Get Started Now</span>
+            <svg id="leadSubmitArrow" class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+            <div id="leadSubmitSpinner" class="hidden w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+          </button>
+        </form>
+      </div>
+
+      <div id="leadSuccessState" class="hidden p-8 sm:p-12 text-center relative z-10 flex-col items-center justify-center min-h-[400px]">
+        <div class="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg class="w-10 h-10 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h3 class="text-3xl font-black text-white font-heading tracking-tight mb-3">Audit Requested!</h3>
+        <p class="text-gray-400">We've received your details. One of our experts will contact you shortly to schedule your free audit.</p>
+        <button id="closeSuccessBtn" class="mt-8 bg-gray-800 text-white font-medium py-3 px-8 rounded-xl hover:bg-gray-700 transition-colors">
+          Done
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  import { createClient } from '@supabase/supabase-js';
+
+  // Safe client-side Supabase init
+  const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+  const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+  
+  let supabase = null;
+  if (supabaseUrl && supabaseKey) {
+    supabase = createClient(supabaseUrl, supabaseKey);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('leadModal');
+    const backdrop = document.getElementById('leadModalBackdrop');
+    const closeBtn = document.getElementById('closeLeadModal');
+    const closeSuccessBtn = document.getElementById('closeSuccessBtn');
+    const form = document.getElementById('leadForm');
+    
+    const formContainer = document.getElementById('leadFormContainer');
+    const successState = document.getElementById('leadSuccessState');
+    
+    const submitBtn = document.getElementById('leadSubmitBtn');
+    const submitText = document.getElementById('leadSubmitText');
+    const submitArrow = document.getElementById('leadSubmitArrow');
+    const submitSpinner = document.getElementById('leadSubmitSpinner');
+
+    // Open Modal logic
+    const openTriggers = document.querySelectorAll('[data-open-modal="auditModal"]');
+    openTriggers.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if(modal) {
+          modal.classList.remove('hidden');
+          setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        }
+      });
+    });
+
+    const closeModal = () => {
+      if(modal) {
+        modal.classList.add('opacity-0');
+        setTimeout(() => {
+          modal.classList.add('hidden');
+          // Reset form on close
+          if(form) (form as HTMLFormElement).reset();
+          if(formContainer) formContainer.classList.remove('hidden');
+          if(successState) successState.classList.add('hidden');
+        }, 300);
+      }
+    };
+
+    if(backdrop) backdrop.addEventListener('click', closeModal);
+    if(closeBtn) closeBtn.addEventListener('click', closeModal);
+    if(closeSuccessBtn) closeSuccessBtn.addEventListener('click', closeModal);
+
+    // Form Submit logic
+    if(form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        if(!supabase) {
+          alert('Database connection error. Please try again later.');
+          return;
+        }
+
+        // UI Loading
+        if(submitBtn) (submitBtn as HTMLButtonElement).disabled = true;
+        if(submitText) submitText.classList.add('hidden');
+        if(submitArrow) submitArrow.classList.add('hidden');
+        if(submitSpinner) submitSpinner.classList.remove('hidden');
+
+        const formData = new FormData(form as HTMLFormElement);
+        
+        try {
+          const { error } = await supabase.from('leads').insert([
+            {
+              business_name: formData.get('business_name'),
+              email: formData.get('email'),
+              phone: formData.get('phone'),
+              best_time_to_call: 'Anytime' // Simplified for the new fresh form
+            }
+          ]);
+
+          if (error) throw error;
+
+          // Success UI
+          if(formContainer) formContainer.classList.add('hidden');
+          if(successState) successState.classList.remove('hidden');
+          if(successState) successState.classList.add('flex');
+
+        } catch (err) {
+          console.error('Submission error:', err);
+          alert('Something went wrong. Please try again.');
+        } finally {
+          // Reset button state
+          if(submitBtn) (submitBtn as HTMLButtonElement).disabled = false;
+          if(submitText) submitText.classList.remove('hidden');
+          if(submitArrow) submitArrow.classList.remove('hidden');
+          if(submitSpinner) submitSpinner.classList.add('hidden');
+        }
+      });
+    }
+  });
+</script>
