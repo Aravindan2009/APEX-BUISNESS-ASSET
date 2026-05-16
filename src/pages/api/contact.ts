@@ -1,17 +1,24 @@
 import type { APIRoute } from 'astro';
 import { supabase } from '../../lib/supabase';
 
-export const POST: APIRoute = async ({ request, redirect }) => {
+export const POST: APIRoute = async ({ request }) => {
   try {
-    const formData = await request.formData();
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const phone = formData.get('phone');
-    const timeToCall = formData.get('timeToCall');
+    let name, email, phone, timeToCall;
+    try {
+      const bodyText = await request.text();
+      const params = new URLSearchParams(bodyText);
+      name = params.get('name');
+      email = params.get('email');
+      phone = params.get('phone');
+      timeToCall = params.get('timeToCall');
+    } catch (parseError) {
+      console.error("Failed to parse form data:", parseError);
+      return new Response(null, { status: 302, headers: { Location: '/?error=server_error' } });
+    }
 
     // Validate the data
     if (!name || !email || !phone || !timeToCall) {
-      return redirect('/?error=server_error');
+      return new Response(null, { status: 302, headers: { Location: '/?error=server_error' } });
     }
 
     try {
@@ -24,7 +31,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       if (emailError) {
         console.error("Error checking email count:", emailError);
       } else if (emailCount !== null && emailCount >= 4) {
-        return redirect('/?error=email_limit');
+        return new Response(null, { status: 302, headers: { Location: '/?error=email_limit' } });
       }
 
       // Check if phone has been used >= 2 times
@@ -36,7 +43,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       if (phoneError) {
         console.error("Error checking phone count:", phoneError);
       } else if (phoneCount !== null && phoneCount >= 2) {
-        return redirect('/?error=phone_limit');
+        return new Response(null, { status: 302, headers: { Location: '/?error=phone_limit' } });
       }
 
       const { error: dbError } = await supabase
@@ -61,8 +68,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
 
     if (!resendApiKey) {
       console.warn("RESEND_API_KEY is not set. Simulating form submission.");
-      // Simulate successful submission for demo purposes
-      return redirect('/?success=true');
+      return new Response(null, { status: 302, headers: { Location: '/?success=true' } });
     }
 
     try {
@@ -87,18 +93,18 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       });
 
       if (res.ok) {
-        return redirect('/?success=true');
+        return new Response(null, { status: 302, headers: { Location: '/?success=true' } });
       } else {
         const errorData = await res.json();
         console.error("Resend API Error:", errorData);
-        return redirect('/?error=server_error');
+        return new Response(null, { status: 302, headers: { Location: '/?error=server_error' } });
       }
     } catch (error) {
       console.error("Error sending email:", error);
-      return redirect('/?error=server_error');
+      return new Response(null, { status: 302, headers: { Location: '/?error=server_error' } });
     }
   } catch (globalError) {
     console.error("Global API Route Exception:", globalError);
-    return redirect('/?error=server_error');
+    return new Response(null, { status: 302, headers: { Location: '/?error=server_error' } });
   }
 };
