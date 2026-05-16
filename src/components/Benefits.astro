@@ -1,52 +1,54 @@
 ---
 // Benefits.astro
 ---
-<section id="benefits" class="py-24 relative overflow-hidden">
-  {/* Subtle tri-color ambient glows */}
-  <div class="absolute top-1/2 left-0 w-[300px] h-[300px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
-  <div class="absolute top-0 right-1/4 w-[250px] h-[250px] bg-brand-orange/10 blur-[100px] rounded-full pointer-events-none"></div>
-  <div class="absolute bottom-0 left-1/2 w-[300px] h-[200px] bg-brand-green/10 blur-[100px] rounded-full pointer-events-none"></div>
+<section id="benefits" class="py-24 bg-white relative overflow-hidden">
+  <div class="absolute top-1/2 left-0 w-[300px] h-[300px] bg-brand-indigo/6 blur-[100px] rounded-full pointer-events-none"></div>
+  <div class="absolute top-0 right-1/4 w-[250px] h-[250px] bg-brand-cyan/6 blur-[100px] rounded-full pointer-events-none"></div>
+  <div class="absolute bottom-0 left-1/2 w-[300px] h-[200px] bg-brand-coral/5 blur-[100px] rounded-full pointer-events-none"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
-      <h2 class="text-brand-orange font-semibold tracking-wide uppercase text-sm mb-3">The Psychology of Conversion</h2>
-      <h3 class="text-3xl md:text-5xl font-heading font-bold text-white mb-6">How we ethically hack your customers' brains.</h3>
-      <p class="text-lg text-brand-muted">We don't guess. We use data-backed behavioral design to guide visitors exactly where we want them: your booking calendar.</p>
+      <span class="badge-indigo mb-4 mx-auto">Why Apex Business Assets</span>
+      <h3 class="text-3xl md:text-5xl font-heading font-bold text-brand-midnight mb-6 mt-4">Built differently. Focused entirely on you.</h3>
+      <p class="text-lg text-brand-slate">We are a boutique web agency — small by design, so every client gets our full attention and a website built specifically for their business.</p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-8">
 
-      {/* Benefit 1 — Blue (Primary) */}
-      <div class="glass-card p-8 animate-on-scroll border-brand-primary/20 hover:border-brand-primary/50 transition-colors duration-300">
-        <div class="w-12 h-12 bg-brand-primary/15 rounded-xl flex items-center justify-center mb-6 border border-brand-primary/30">
-          <svg class="w-6 h-6 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+      {/* Differentiator 1 — No Templates */}
+      <div class="card p-8 animate-on-scroll border-brand-indigo/20 hover:border-brand-indigo/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(79,70,229,0.15)] group relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-indigo/5 rounded-full blur-2xl group-hover:bg-brand-indigo/10 transition-colors duration-500"></div>
+        <div class="w-12 h-12 bg-brand-indigo/10 rounded-xl flex items-center justify-center mb-6 border border-brand-indigo/20 group-hover:scale-110 transition-transform duration-500 group-hover:bg-brand-indigo group-hover:text-white text-brand-indigo relative z-10">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
         </div>
-        <h4 class="text-xl font-heading font-bold text-white mb-3">The "Halo Effect"</h4>
-        <p class="text-brand-muted leading-relaxed">
-          People judge your entire business competence by your website in 0.05 seconds. We create a premium, authoritative design that makes your competitors look cheap.
+        <h4 class="text-xl font-heading font-bold text-brand-midnight mb-3 relative z-10">Custom-Built, Not Templated</h4>
+        <p class="text-brand-slate leading-relaxed relative z-10">
+          We don't drag and drop a WordPress theme and call it done. Every website we build is coded specifically for your business, your audience, and your goals.
         </p>
       </div>
 
-      {/* Benefit 2 — Green (Growth) */}
-      <div class="glass-card p-8 animate-on-scroll border-brand-green/20 hover:border-brand-green/50 transition-colors duration-300" style="animation-delay: 0.1s;">
-        <div class="w-12 h-12 bg-brand-green/15 rounded-xl flex items-center justify-center mb-6 border border-brand-green/30">
-          <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+      {/* Differentiator 2 — Local SEO First */}
+      <div class="card p-8 animate-on-scroll border-brand-cyan/20 hover:border-brand-cyan/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(6,182,212,0.15)] group relative overflow-hidden" style="animation-delay: 0.1s;">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-cyan/5 rounded-full blur-2xl group-hover:bg-brand-cyan/10 transition-colors duration-500"></div>
+        <div class="w-12 h-12 bg-brand-cyan/10 rounded-xl flex items-center justify-center mb-6 border border-brand-cyan/20 group-hover:scale-110 transition-transform duration-500 group-hover:bg-brand-cyan group-hover:text-white text-brand-cyan relative z-10">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
         </div>
-        <h4 class="text-xl font-heading font-bold text-white mb-3">Frictionless Dopamine Loops</h4>
-        <p class="text-brand-muted leading-relaxed">
-          Confused minds don't buy. We strip away distractions and use micro-commitments to make contacting you feel natural, inevitable, and rewarding.
+        <h4 class="text-xl font-heading font-bold text-brand-midnight mb-3 relative z-10">Local SEO Is Built In</h4>
+        <p class="text-brand-slate leading-relaxed relative z-10">
+          A beautiful website that no one finds is just an expensive hobby. We build every site with local search visibility in mind from day one — not as an afterthought.
         </p>
       </div>
 
-      {/* Benefit 3 — Orange (Urgency) */}
-      <div class="glass-card p-8 animate-on-scroll border-brand-orange/20 hover:border-brand-orange/50 transition-colors duration-300" style="animation-delay: 0.2s;">
-        <div class="w-12 h-12 bg-brand-orange/15 rounded-xl flex items-center justify-center mb-6 border border-brand-orange/30">
-          <svg class="w-6 h-6 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+      {/* Differentiator 3 — Transparent & Simple */}
+      <div class="card p-8 animate-on-scroll border-brand-coral/20 hover:border-brand-coral/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(244,63,94,0.15)] group relative overflow-hidden" style="animation-delay: 0.2s;">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-coral/5 rounded-full blur-2xl group-hover:bg-brand-coral/10 transition-colors duration-500"></div>
+        <div class="w-12 h-12 bg-brand-coral/10 rounded-xl flex items-center justify-center mb-6 border border-brand-coral/20 group-hover:scale-110 transition-transform duration-500 group-hover:bg-brand-coral group-hover:text-white text-brand-coral relative z-10">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
         </div>
-        <h4 class="text-xl font-heading font-bold text-white mb-3">Dominance & Market Capture</h4>
-        <p class="text-brand-muted leading-relaxed">
-          When someone searches for a local service, they have high buying intent. We optimize for speed and search to capture them before they ever see the other guys.
+        <h4 class="text-xl font-heading font-bold text-brand-midnight mb-3 relative z-10">Simple, Transparent Process</h4>
+        <p class="text-brand-slate leading-relaxed">
+          No jargon, no hidden fees, no lock-in contracts. We have one simple goal: deliver a website that genuinely helps your business, then keep it running for you.
         </p>
       </div>
 

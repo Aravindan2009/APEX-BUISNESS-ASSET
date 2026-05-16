@@ -5,25 +5,28 @@ export default {
     extend: {
       colors: {
         brand: {
-          dark: '#0A1220',      // Deep navy-black (logo shadow/background tone)
-          card: '#0F1C2E',      // Dark steel-blue card background
-          navy: '#1A3A5C',      // Deep blue from logo "A" structure
-          primary: '#2D5F8A',   // Steel blue — main "A" outer frame
-          orange: '#F47B20',    // Vibrant orange — logo bar chart columns
-          green: '#2DB84B',     // Bright green — logo growth arrow
-          light: '#F0F6FF',     // Slight blue-tinted white
-          muted: '#7A95B0',     // Muted blue-grey for body text
+          white: '#FFFFFF',      // Crisp White — primary background
+          ghost: '#F8FAFC',      // Ghost White — secondary background sections
+          ash: '#E2E8F0',        // Light Ash — borders, separators, UI elements
+          slate: '#64748B',      // Slate Gray — body text, subdued icons
+          midnight: '#0A192F',   // Midnight Blue — headings, dark accents
+          indigo: '#4F46E5',     // Electric Indigo — primary brand color
+          cyan: '#06B6D4',       // Vibrant Cyan — secondary accent, hovers
+          coral: '#F43F5E',      // Coral Pink — CTA buttons, highlights
+          orange: '#F47B20',     // Vibrant Orange — for the logo and specific accents
         }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        heading: ['Space Grotesk', 'sans-serif'],
+        sans: ['Basier Circle', 'Inter', 'system-ui', 'sans-serif'],
+        heading: ['Basier Circle', 'Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'glow-blue':   '0 0 25px rgba(45, 95, 138, 0.5)',
-        'glow-orange': '0 0 25px rgba(244, 123, 32, 0.5)',
-        'glow-green':  '0 0 25px rgba(45, 184, 75, 0.5)',
-        'glass':       '0 8px 32px 0 rgba(0, 0, 0, 0.45)',
+        'glow-indigo': '0 0 30px rgba(79, 70, 229, 0.25)',
+        'glow-cyan':   '0 0 30px rgba(6, 182, 212, 0.25)',
+        'glow-coral':  '0 0 30px rgba(244, 63, 94, 0.30)',
+        'glow-orange': '0 0 30px rgba(244, 123, 32, 0.30)',
+        'card':        '0 4px 24px 0 rgba(10, 25, 47, 0.08)',
+        'card-hover':  '0 8px 40px 0 rgba(10, 25, 47, 0.14)',
       },
       keyframes: {
         fadeInUp: {
@@ -33,11 +36,16 @@ export default {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%':      { transform: 'translateY(-10px)' },
+        },
+        shimmer: {
+          '0%':   { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
         }
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'float':      'float 6s ease-in-out infinite',
+        'shimmer':    'shimmer 3s linear infinite',
       }
     },
   },

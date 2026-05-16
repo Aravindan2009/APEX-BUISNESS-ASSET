@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import ToastNotification from '../components/ToastNotification.astro';
 
 interface Props {
   title: string;
@@ -23,6 +24,7 @@ const { title } = Astro.props;
   </head>
   <body class="bg-brand-dark text-brand-light min-h-screen flex flex-col antialiased">
     <slot />
+    <ToastNotification />
     
     <script>
       const observerOptions = {

@@ -5,36 +5,68 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #0A1220;
-    color: #F0F6FF;
+    background-color: #FFFFFF;
+    color: #0A192F;
   }
   body {
-    @apply font-sans antialiased selection:bg-brand-primary selection:text-white;
+    @apply font-sans antialiased selection:bg-brand-indigo selection:text-white;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-brand-midnight;
+  }
+  p {
+    @apply font-sans text-brand-slate;
   }
 }
 
 @layer components {
-  /* Primary CTA — Steel Blue */
+  /* Primary CTA — Electric Indigo */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 font-semibold text-white bg-brand-primary rounded-lg transition-all duration-300 hover:brightness-125 hover:shadow-glow-blue active:scale-95;
+    @apply inline-flex items-center justify-center px-6 py-3 font-semibold text-white bg-brand-indigo rounded-xl transition-all duration-300 hover:shadow-glow-indigo hover:-translate-y-0.5 active:scale-95;
   }
 
-  /* Secondary CTA — Ghost */
+  /* Coral Pink — main CTA / "Get a Quote" */
+  .btn-coral {
+    @apply inline-flex items-center justify-center px-6 py-3 font-semibold text-white bg-brand-coral rounded-xl transition-all duration-300 hover:shadow-glow-coral hover:-translate-y-0.5 active:scale-95;
+  }
+
+  /* Secondary CTA — Outlined Indigo */
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 font-semibold text-brand-light bg-brand-card border border-brand-primary/30 rounded-lg transition-all duration-300 hover:bg-brand-primary/10 hover:border-brand-primary/60 active:scale-95;
+    @apply inline-flex items-center justify-center px-6 py-3 font-semibold text-brand-indigo bg-white border-2 border-brand-indigo/30 rounded-xl transition-all duration-300 hover:bg-brand-indigo/5 hover:border-brand-indigo/60 active:scale-95;
   }
 
-  /* Orange action button */
-  .btn-orange {
-    @apply inline-flex items-center justify-center px-6 py-3 font-semibold text-white bg-brand-orange rounded-lg transition-all duration-300 hover:brightness-110 hover:shadow-glow-orange active:scale-95;
+  /* Cyan ghost button */
+  .btn-cyan {
+    @apply inline-flex items-center justify-center px-6 py-3 font-semibold text-brand-cyan bg-brand-cyan/10 border border-brand-cyan/30 rounded-xl transition-all duration-300 hover:bg-brand-cyan/20 hover:shadow-glow-cyan active:scale-95;
   }
 
-  /* Glass cards — dark navy */
-  .glass-card {
-    @apply bg-brand-card/80 backdrop-blur-md border border-brand-primary/20 rounded-2xl shadow-glass;
+  /* Light card — for sections on white */
+  .card {
+    @apply bg-white border border-brand-ash rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-300;
+  }
+
+  /* Ghost-section card */
+  .ghost-card {
+    @apply bg-brand-ghost border border-brand-ash rounded-2xl shadow-card;
+  }
+
+  /* Indigo gradient badge */
+  .badge-indigo {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-indigo/10 border border-brand-indigo/20 text-brand-indigo text-xs font-bold;
+  }
+
+  /* Coral badge for urgency */
+  .badge-coral {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-coral/10 border border-brand-coral/20 text-brand-coral text-xs font-bold;
+  }
+
+  /* Cyan badge for tech highlights */
+  .badge-cyan {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan text-xs font-bold;
   }
 }
 
+/* ---- Scroll-triggered animations ---- */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(20px);
@@ -46,4 +78,20 @@
   transform: translateY(0);
 }
 
+@layer components {
+  /* ---- Gradient text helper ---- */
+  .gradient-text {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+  }
 
+  /* ---- Hero gradient background ---- */
+  .hero-gradient {
+    background: linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 40%, #EEF2FF 100%);
+  }
+
+  /* ---- Section separator line ---- */
+  .section-divider {
+    @apply border-brand-ash;
+  }
+}

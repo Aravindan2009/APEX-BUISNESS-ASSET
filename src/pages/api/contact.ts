@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { supabase } from '../../lib/supabase';
 
 export const POST: APIRoute = async ({ request, redirect }) => {
   const formData = await request.formData();
@@ -13,6 +14,49 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       JSON.stringify({ message: "Missing required fields" }),
       { status: 400 }
     );
+  }
+
+  try {
+    // Check if email has been used >= 4 times
+    const { count: emailCount, error: emailError } = await supabase
+      .from('leads')
+      .select('*', { count: 'exact', head: true })
+      .eq('email', email);
+
+    if (emailError) {
+      console.error("Error checking email count:", emailError);
+    } else if (emailCount !== null && emailCount >= 4) {
+      return redirect('/?error=email_limit');
+    }
+
+    // Check if phone has been used >= 2 times
+    const { count: phoneCount, error: phoneError } = await supabase
+      .from('leads')
+      .select('*', { count: 'exact', head: true })
+      .eq('phone', phone);
+
+    if (phoneError) {
+      console.error("Error checking phone count:", phoneError);
+    } else if (phoneCount !== null && phoneCount >= 2) {
+      return redirect('/?error=phone_limit');
+    }
+
+    const { error: dbError } = await supabase
+      .from('leads')
+      .insert([
+        { 
+          business_name: name, 
+          email: email, 
+          phone: phone, 
+          best_time_to_call: timeToCall 
+        }
+      ]);
+
+    if (dbError) {
+      console.error("Supabase Insert Error:", dbError);
+    }
+  } catch (err) {
+    console.error("Supabase Exception:", err);
   }
 
   const resendApiKey = import.meta.env.RESEND_API_KEY;

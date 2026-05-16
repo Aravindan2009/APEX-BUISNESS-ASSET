@@ -1,36 +1,53 @@
 ---
 // Hero.astro
 ---
-<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-
-  {/* Multi-color ambient glow matching logo */}
-  <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-primary/15 blur-[140px] rounded-full pointer-events-none"></div>
-  <div class="absolute top-10 right-1/4 w-[400px] h-[400px] bg-brand-orange/10 blur-[140px] rounded-full pointer-events-none"></div>
-  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-green/10 blur-[120px] rounded-full pointer-events-none"></div>
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-brand-ghost">
+  
+  {/* Ambient glow blobs */}
+  <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-indigo/8 blur-[140px] rounded-full pointer-events-none z-0"></div>
+  <div class="absolute top-10 right-1/4 w-[400px] h-[400px] bg-brand-cyan/8 blur-[140px] rounded-full pointer-events-none z-0"></div>
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-coral/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
 
-    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-orange/10 border border-brand-orange/30 text-brand-orange text-xs sm:text-sm font-bold mb-6 sm:mb-8 animate-fade-in-up max-w-full">
-      <span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse shrink-0"></span>
-      <span class="truncate sm:whitespace-normal">The harsh truth about your local market...</span>
+    <div class="badge-indigo mb-6 sm:mb-8 animate-fade-in-up max-w-full mx-auto w-fit">
+      <span class="w-2 h-2 rounded-full bg-brand-indigo animate-pulse shrink-0"></span>
+      <span class="truncate sm:whitespace-normal">Web Design & Local SEO — Built for Local Businesses</span>
     </div>
 
-    <h1 class="text-4xl sm:text-5xl md:text-7xl font-heading font-extrabold text-white tracking-tight mb-6 animate-fade-in-up" style="animation-delay: 0.1s;">
-      Your Competitors Are Stealing <br class="hidden md:block"/>
-      <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-brand-green to-brand-orange">Your Highest-Paying Clients.</span>
+    <h1 class="text-4xl sm:text-5xl md:text-7xl font-heading font-extrabold text-brand-midnight tracking-tight mb-6 animate-fade-in-up" style="animation-delay: 0.1s;">
+      Stop Losing Local Leads to <br class="hidden md:block"/>
+      <span class="gradient-text">Outdated Web Design.</span>
     </h1>
 
-    <p class="mt-6 text-lg sm:text-xl text-brand-muted max-w-2xl mx-auto mb-10 animate-fade-in-up px-2 sm:px-0" style="animation-delay: 0.2s;">
-      Right now, people in your city are searching for your exact services. If your website isn't engineered for conversion, you are literally handing cash to the other guys.
+    <p class="mt-6 text-lg sm:text-xl text-brand-slate max-w-2xl mx-auto mb-10 animate-fade-in-up px-2 sm:px-0" style="animation-delay: 0.2s;">
+      We build custom, high-performing digital assets that turn local search traffic into booked clients. Stop treating your website like a brochure, and start treating it like a growth engine.
     </p>
 
     <div class="flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
-      <a href="#contact" class="btn-orange w-full sm:w-auto text-lg px-8 py-4">
-        Claim Your Free Strategy Audit
+      <button data-open-modal="auditModal" class="btn-coral w-full sm:w-auto text-lg px-8 py-4 group flex items-center justify-center gap-2 cursor-pointer">
+        Get a Free Strategy Call
+        <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+      </button>
+      <a href="#services" class="btn-secondary w-full sm:w-auto text-lg px-8 py-4">
+        See What We Offer
       </a>
-      <a href="#audit" class="btn-secondary w-full sm:w-auto text-lg px-8 py-4">
-        See Exactly Why You're Losing ↓
-      </a>
+    </div>
+
+    {/* Honest trust indicators — no fake numbers */}
+    <div class="mt-12 flex flex-wrap justify-center gap-6 text-sm text-brand-slate animate-fade-in-up" style="animation-delay: 0.4s;">
+      <span class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-brand-indigo" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        No templates. Built from scratch.
+      </span>
+      <span class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-brand-indigo" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        Delivered within a week.
+      </span>
+      <span class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-brand-indigo" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        No long-term contracts.
+      </span>
     </div>
 
   </div>
