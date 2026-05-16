@@ -93,16 +93,10 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     } else {
       const errorData = await res.json();
       console.error("Resend API Error:", errorData);
-      return new Response(
-        JSON.stringify({ message: "Failed to send email" }),
-        { status: 500 }
-      );
+      return redirect('/?error=server_error');
     }
   } catch (error) {
     console.error("Error sending email:", error);
-    return new Response(
-      JSON.stringify({ message: "Server error" }),
-      { status: 500 }
-    );
+    return redirect('/?error=server_error');
   }
 };
